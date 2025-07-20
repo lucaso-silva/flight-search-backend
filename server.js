@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 app.use(cookieParser());
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://flight-search-cpsc2650.vercel.app/',
     credentials: true
 }));
 app.use(express.json());
