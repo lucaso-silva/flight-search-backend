@@ -11,10 +11,25 @@ dotenv.config();
 
 const app = express();
 app.use(cookieParser());
-app.use(cors({
-    origin: 'https://flight-search-cpsc2650-i8ssm6w1s-lucasosilvas-projects.vercel.app',
-    credentials: true
-}));
+
+let whitelist = ['https://flight-search-cpsc2650.vercel.app', 'https://flight-search-cpsc2650-git-main-lucasosilvas-projects.vercel.app', 'https://flight-search-cpsc2650-45pxfb839-lucasosilvas-projects.vercel.app'];
+
+let corsOptions = {
+    origin: function(origin, callback){
+        if(whitelist.indexOf(origin)!==-1){
+            callback(null,true);
+        }else{
+            callback(new Error('Not allowed by cors'));
+        }
+    }
+}
+
+// app.use(cors({
+//     origin: 'https://flight-search-cpsc2650-i8ssm6w1s-lucasosilvas-projects.vercel.app',
+//     credentials: true
+// }));
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 mongoose
