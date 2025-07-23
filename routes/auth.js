@@ -58,7 +58,7 @@ router.post('/login', async (req, res)=>{
 //Get current User
 router.get('/me', async (req,res)=>{
     // const token = req.headers.authorization?.split(' ')[1];
-    const token = req.cookies.token;
+    const token = req.cookies._vercel_jwt;
     if(!token) return res.status(401).json({ error:'Missing token' });
 
     try{
