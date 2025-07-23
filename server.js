@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 app.use(cookieParser());
 app.use(cors({
-    origin: 'https://flight-search-cpsc2650.vercel.app',
+    origin: 'https://flight-search-cpsc2650-i8ssm6w1s-lucasosilvas-projects.vercel.app/',
     credentials: true
 }));
 app.use(express.json());
